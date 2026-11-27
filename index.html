@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APK Web Viewer</title>
+<style>
+:root{--bg:#f6f7f9;--fg:#1b1d21;--card:#fff;--bd:#d9dce1;--ac:#2f6fed}
+@media(prefers-color-scheme:dark){:root{--bg:#15171a;--fg:#e8eaed;--card:#1f2226;--bd:#33373d;--ac:#6f9bff}}
+*{box-sizing:border-box}body{margin:0;font:14px system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+header{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--bd);background:var(--card)}
+header h1{font-size:16px;margin:0;flex:1}
+label.btn{background:var(--ac);color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer}
+main{display:grid;grid-template-columns:minmax(280px,1fr) 380px;gap:16px;padding:16px;max-width:1100px;margin:auto}
+@media(max-width:800px){main{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;min-width:0}
+nav{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+nav button{border:1px solid var(--bd);background:none;color:inherit;padding:6px 12px;border-radius:20px;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.tab{display:none;max-height:70vh;overflow:auto}.tab.on{display:block}
+.row{padding:6px 8px;border-bottom:1px solid var(--bd);cursor:pointer;direction:ltr;text-align:left;word-break:break-all}
+.row:hover{background:var(--bg)}
+#phone{width:360px;height:640px;max-width:100%;margin:auto;border:10px solid #222;border-radius:28px;background:#fff;color:#111;overflow:auto;direction:ltr;font-family:Roboto,system-ui,sans-serif}
+#icon{width:64px;height:64px;border-radius:14px;background:var(--bd)}
+input.q{width:100%;padding:8px;margin-bottom:8px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:inherit;direction:ltr}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;direction:ltr;text-align:left}dt{opacity:.6}dd{margin:0;word-break:break-all}
+</style>
+</head>
+<body>
+<header><h1>APK Web Viewer</h1><span id="st">גררו קובץ APK לכאן</span>
+<button class="btn" id="run" style="border:0">▶ הרצה</button>
+<label class="btn">בחירת APK<input id="f" type="file" accept=".apk,.zip" hidden></label></header>
+<main>
+<section class="card">
+<nav id="tabs"></nav>
+<div class="tab" id="t-info"></div>
+<div class="tab" id="t-lay"></div>
+<div class="tab" id="t-cls"><input class="q" id="q" placeholder="סינון מחלקות…"><div id="cls"></div></div>
+<div class="tab" id="t-files"></div>
+</section>
+<section class="card"><div id="phone"></div><pre id="log" style="direction:ltr;text-align:left;max-height:160px;overflow:auto;font-size:12px"></pre></section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="js/axml.js"></script>
+<script src="js/arsc.js"></script>
+<script src="js/render.js"></script>
+<script src="js/vm.js"></script>
+<script src="js/lib.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
